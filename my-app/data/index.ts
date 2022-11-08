@@ -1,0 +1,1 @@
+export const LinksPortfolio: string[] = ['home', 'works', 'about-me', 'contacts'];
