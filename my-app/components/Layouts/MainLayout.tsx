@@ -1,5 +1,6 @@
 import  Head  from 'next/head';
 import React, { Dispatch, FC, SetStateAction } from 'react'
+import { useTheme } from '@mui/material'
 import Header from '../Header';
 
 type PropsMainLayouts = {
@@ -10,6 +11,7 @@ type PropsMainLayouts = {
 }
 
 export const MainLayout: FC<PropsMainLayouts> = ({children, title, isDark, setIsDark}) => {
+  const theme = useTheme()
   return (
     <>
       <Head>
@@ -17,7 +19,7 @@ export const MainLayout: FC<PropsMainLayouts> = ({children, title, isDark, setIs
         <meta charSet='utf-8'/>
       </Head> 
       <Header isDark={isDark} setIsDark={setIsDark}></Header>
-      <main>{children}</main>
+      <main style={{background: theme.palette.primary.light}}>{children}</main>
     </>
   )
 }

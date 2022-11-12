@@ -4,6 +4,7 @@ import React, { Dispatch, FC, SetStateAction } from 'react'
 import styled from 'styled-components'
 import { LinksPortfolio } from '../data'
 import {IoLogoNodejs} from 'react-icons/io'
+import { Media } from './Media'
 
 interface PropsHeader {
     isDark: boolean;
@@ -12,10 +13,9 @@ interface PropsHeader {
 
 const Header: FC<PropsHeader> = ({isDark, setIsDark}) => {
     const theme = useTheme();
-    console.log(theme.palette.secondary.main)
   return (
     <HeaderContainer colorCustom={theme.palette.primary.dark} bgCustom={theme.palette.primary.light}>
-        <HeaderContent>
+        <Content color={theme.palette.primary.dark} style={{height: '80px'}}>
             <Logo>
                 <IoLogoNodejs color={theme.palette.primary.main}/>
                 <LogoText>Elias</LogoText>
@@ -28,28 +28,29 @@ const Header: FC<PropsHeader> = ({isDark, setIsDark}) => {
                 })}
                 <Switch value={isDark} onChange={() => setIsDark(prev => !prev)} defaultChecked />
             </Navbar>
-        </HeaderContent>
+            <Media></Media>
+        </Content>
     </HeaderContainer>
   )
 }
 
-interface HeaderContainerProps {
-    bgCustom: string;
-    colorCustom: string;
+export interface ContainerProps {
+    bgCustom?: string;
+    colorCustom?: string;
 }
 
-const HeaderContainer = styled.div<HeaderContainerProps>`
+const HeaderContainer = styled.div<ContainerProps>`
     background: ${p => p.bgCustom};
     color: ${p => p.colorCustom};
 `
 
-const HeaderContent = styled.div`
+export const Content = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
     max-width: 1024px;
-    height: 80px;
+    position: relative;
 `
 
 const Logo = styled.div`
