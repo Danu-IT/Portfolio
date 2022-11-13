@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import React, {FC} from 'react'
-import { useTheme } from '@mui/material'
+import styled from 'styled-components';
+import React, {FC} from 'react';
+import { useTheme } from '@mui/material';
 
 type ButtonProps = {
     children?: React.ReactNode;

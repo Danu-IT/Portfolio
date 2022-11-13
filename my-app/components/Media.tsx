@@ -3,12 +3,15 @@ import {AiFillGithub} from 'react-icons/ai'
 import {SlSocialVkontakte} from 'react-icons/sl'
 import {FiFigma} from 'react-icons/fi';
 import styled from 'styled-components';
+import { ContainerProps } from './Header';
+import { useTheme } from '@mui/material';
 
 interface MediaProps {}
 
 export const Media:FC<MediaProps> = ({}) => {
+  const theme = useTheme();
   return (
-    <MediaContainer>
+    <MediaContainer colorCustom={theme.palette.primary.dark}>
       <AiFillGithub></AiFillGithub>
       <SlSocialVkontakte></SlSocialVkontakte>
       <FiFigma></FiFigma>
@@ -16,19 +19,22 @@ export const Media:FC<MediaProps> = ({}) => {
   )
 }
 
-const MediaContainer = styled.div`
+const MediaContainer = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: absolute;
   top: 190px;
   left: -100px;
+  color: ${p => p.colorCustom};
   & > * {
-    margin-bottom: 12px;
+    margin-bottom: 12px;  
     cursor: pointer;
+    transition-duration: 500ms;
     &:hover{
       opacity: 0.8;
-      scale: 1.1;
+      scale: 1.05;
+      color: #C778DD;
     }
   }
   &::after{
