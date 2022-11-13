@@ -2,7 +2,7 @@ import React, {FC} from 'react'
 import { ContainerProps, Content } from "../components/Header";
 import Button from "../components/UI/Button";
 import styled from "styled-components";
-import { useTheme } from '@mui/material'
+import { useTheme } from '@mui/material';
 
 
 interface HeaderMainProps {}
@@ -69,7 +69,6 @@ const TextImage = styled.span`
   position: absolute;
   bottom: -35px;
   left: 50px;
-  color: #ABB2BF;
   border: 1px solid #ABB2BF;
   padding: 8px 30px;
   font-weight: 800;

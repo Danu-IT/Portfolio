@@ -70,9 +70,10 @@ const LogoText = styled.div`
 
 const Item = styled.li`
     cursor: pointer;
+    transition-duration: 100ms;
     :hover{
         scale: 1.05;
-        transition-duration: 500;
+        transition-duration: 100ms;
         opacity: 0.9;
     }
 `
