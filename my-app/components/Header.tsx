@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { LinksPortfolio } from '../data'
 import {IoLogoNodejs} from 'react-icons/io'
 import { Media } from './Media'
+import Link from 'next/link'
 
 interface PropsHeader {
     isDark: boolean;
@@ -13,30 +14,32 @@ interface PropsHeader {
 
 const Header: FC<PropsHeader> = ({isDark, setIsDark}) => {
     const theme = useTheme();
-  return (
-    <HeaderContainer colorCustom={theme.palette.primary.dark} bgCustom={theme.palette.primary.light}>
-        <Content color={theme.palette.primary.dark} style={{height: '80px'}}>
-            <Logo>
-                <IoLogoNodejs color={theme.palette.primary.main}/>
-                <LogoText>Elias</LogoText>
-            </Logo>
-            <Navbar>
-                {LinksPortfolio.map((link, i) => {
-                    return(
-                        <Item key={i}><span style={{color: theme.palette.primary.main}}>#</span>{link}</Item>
-                    )
-                })}
-                <Switch value={isDark} onChange={() => setIsDark(prev => !prev)} defaultChecked />
-            </Navbar>
-            <Media></Media>
-        </Content>
-    </HeaderContainer>
-  )
+    return (
+        <HeaderContainer colorCustom={theme.palette.primary.dark} bgCustom={theme.palette.primary.light}>
+            <Content color={theme.palette.primary.dark} style={{height: '80px'}}>
+                <Logo>
+                    <IoLogoNodejs color={theme.palette.primary.main}/>
+                    <LogoText>Elias</LogoText>
+                </Logo>
+                <Navbar>
+                    {LinksPortfolio.map((link, i) => {
+                        return(
+                            <Item key={i}><span style={{color: theme.palette.primary.main}}>#</span><Link href={link.path}>{link.name}</Link></Item>
+                        )
+                    })}
+                    <Switch value={isDark} onChange={() => setIsDark(prev => !prev)} defaultChecked />
+                </Navbar>
+                <Media></Media>
+            </Content>
+        </HeaderContainer>
+    )
 }
 
 export interface ContainerProps {
     bgCustom?: string;
     colorCustom?: string;
+    display?: string;
+    padTop?: string;
 }
 
 const HeaderContainer = styled.div<ContainerProps>`
@@ -53,7 +56,7 @@ export const Content = styled.div`
     position: relative;
 `
 
-const Logo = styled.div`
+export const Logo = styled.div`
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -64,7 +67,7 @@ const Navbar = styled.div`
     gap: 32px;
 `
 
-const LogoText = styled.div`
+export const LogoText = styled.div`
     margin-left: 8px;
 `
 

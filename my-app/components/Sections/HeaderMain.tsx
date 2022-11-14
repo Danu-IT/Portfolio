@@ -1,6 +1,6 @@
 import React, {FC} from 'react'
-import { ContainerProps, Content } from "../components/Header";
-import Button from "../components/UI/Button";
+import { ContainerProps, Content } from "../Header";
+import Button from "../UI/Button";
 import styled from "styled-components";
 import { useTheme } from '@mui/material';
 
@@ -13,7 +13,7 @@ const HeaderMain: FC<HeaderMainProps> = ({}) => {
     <HederContainer colorCustom={theme.palette.primary.dark} bgCustom={theme.palette.primary.light}>
         <HeaderContent>
             <HeaderLeft>
-              <Text>Elias is <span style={{color:theme.palette.primary.main }}>a web designer</span>and</Text>
+              <Text>Daniil is a</Text>
               <Text><span style={{color:theme.palette.primary.main }}>front-end developer</span></Text>
               <SmallText style={{margin: '25px 0'}}>He crafts responsive websites where technologies meet creativity</SmallText>
               <Button>Contact me!!</Button>
@@ -21,6 +21,7 @@ const HeaderMain: FC<HeaderMainProps> = ({}) => {
             <HeaderRight>
               <User src='./User.png'></User>
               <LogoMain src='./LogoMain.svg'></LogoMain>
+              <Dots src='./Dots.svg'></Dots>
               <TextImage>Currently working on Portfolio</TextImage>
             </HeaderRight>
           </HeaderContent>
@@ -79,6 +80,13 @@ const LogoMain = styled.img`
   z-index: 2;
   left: 0;
   top: 80px
+`
+
+const Dots = styled.img`
+  position: absolute;
+  right: 51px;
+  top: 209px;
+  z-index: 101;
 `
 
 export default HeaderMain

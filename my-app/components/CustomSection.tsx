@@ -6,28 +6,29 @@ import TitleSection from './TitleSection';
 import ViewAll from './UI/ViewAll';
 
 interface CustomSectionProps {
-    title: string;
+    title?: string;
     children: React.ReactNode;
     ViewAllVisible?: boolean;
+    padTop?: string;
 }
 
-const CustomSection: FC<CustomSectionProps> = ({title, children, ViewAllVisible}) => {
+const CustomSection: FC<CustomSectionProps> = ({title, children, ViewAllVisible, padTop = '100px'}) => {
   const theme = useTheme();
   return (
-    <CustomSectionBlock colorCustom={theme.palette.primary.dark} bgCustom={theme.palette.primary.light}>
+    <CustomSectionBlock padTop={padTop} colorCustom={theme.palette.primary.dark} bgCustom={theme.palette.primary.light}>
       <CustomSectionContainer>
-        <TitleContainer>
+        {title && <TitleContainer>
           <TitleSection title={title}></TitleSection>
           {ViewAllVisible && <ViewAll/>}
-        </TitleContainer>
-        {children}
+        </TitleContainer>}
+        <div>{children}</div>
       </CustomSectionContainer>
     </CustomSectionBlock>
   )
 }
 
 const CustomSectionBlock = styled.section<ContainerProps>`
-  margin-top: 100px;
+  padding-top: ${p => p.padTop};
   background: ${p => p.bgCustom};
   color: ${p => p.colorCustom};
 `
@@ -38,8 +39,10 @@ const TitleContainer = styled.div`
   justify-content: space-between;
 `
 
-const CustomSectionContainer = styled(Content)`
-  display: block;
+const CustomSectionContainer = styled.div`
+  margin: 0 auto;
+  max-width: 1024px;
+  position: relative;
 `
 
 export default CustomSection

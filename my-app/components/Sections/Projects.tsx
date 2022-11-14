@@ -1,21 +1,24 @@
 import React, {FC} from 'react';
-import { projects } from '../data';
-import CustomSection from './CustomSection';
+import { projects } from '../../data';
+import CustomSection from '../CustomSection';
 import styled from 'styled-components';
 import Image from 'next/image';
-import Button from './UI/Button';
+import Button from '../UI/Button';
 import { useTheme } from '@mui/material'
 
-interface ProjectsProps {}
+interface ProjectsProps {
+  padTop?: string;
+  title?: string;
+}
 
-const Projects: FC<ProjectsProps> = ({}) => {
+const Projects: FC<ProjectsProps> = ({padTop, title}) => {
   const theme = useTheme();
   return (
-    <CustomSection ViewAllVisible={true} title='projects'>
+    <CustomSection padTop={padTop} ViewAllVisible={true} title={title}>
       <ProjectContainer>
         {projects.map((project, i) => (
           <ProjectItem key={i}>
-            <Image alt="Picture of the author" width={330} height={200} style={{marginBottom: '-10px'}} src='/fake.jpg'></Image>
+            <Image alt="Picture of the author" width="0" height="0" sizes="100vw" style={{ width: '100%', height: 'auto' }} src='/fake.jpg'></Image>
             <ProjectItemOptions>
               {project.options.map(option => (
                 <ItemOptions key={i}>{option}  </ItemOptions>
@@ -30,12 +33,13 @@ const Projects: FC<ProjectsProps> = ({}) => {
                 </Button>
                 {project.deploy && 
                 <Button>
-                  <a href={project.deploy} target='blank'>Deploy</a>
+                  <a href={project.deploy} target='blank'>Live</a>
                 </Button>}
               </ButtonContainer>
             </ProjectInfo>
-          </ProjectItem>
+          </ProjectItem>  
         ))}
+        <DotsImage src='/Dots.svg'></DotsImage>
       </ProjectContainer>
     </CustomSection>
   )
@@ -43,13 +47,16 @@ const Projects: FC<ProjectsProps> = ({}) => {
 
 const ProjectContainer = styled.div`
   display: flex;
-  width: 330px;
+  flex-wrap: wrap;
   gap: 15px;
+  position: relative;
 `
-
 
 const ProjectItem = styled.div`
   border: 1px solid gray;
+  display: flex;
+  width: 330px;
+  flex-direction: column;
 `
 
 const ProjectItemOptions = styled.div`
@@ -84,6 +91,9 @@ const ButtonContainer = styled.div`
     margin-right: 10px;
   }
 `
-
+const DotsImage = styled.img`
+  position: absolute;
+  left: -270px;
+`
 
 export default Projects
