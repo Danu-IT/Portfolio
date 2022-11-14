@@ -12,9 +12,9 @@ export const Media:FC<MediaProps> = ({}) => {
   const theme = useTheme();
   return (
     <MediaContainer colorCustom={theme.palette.primary.dark}>
-      <AiFillGithub></AiFillGithub>
-      <SlSocialVkontakte></SlSocialVkontakte>
-      <FiFigma></FiFigma>
+      <a target='blank' href="https://github.com/Danu-IT"><AiFillGithub></AiFillGithub></a>
+      <a target='blank' href="#"><SlSocialVkontakte></SlSocialVkontakte></a>
+      <a target='blank' href="#"><FiFigma></FiFigma></a>
     </MediaContainer>
   )
 }
@@ -38,6 +38,7 @@ const MediaContainer = styled.div<ContainerProps>`
     }
   }
   &::after{
+    display: ${p => p.display};
     position: absolute;
     content: "";
     height: 1px;
