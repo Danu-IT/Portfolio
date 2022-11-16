@@ -4,11 +4,14 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import Button from '../UI/Button';
 
-interface AboutMeProps {}
+interface AboutMeProps {
+    title?: string;
+    padTop?: string;
+}
 
-const AboutMe: FC<AboutMeProps> = ({}) => {
+const AboutMe: FC<AboutMeProps> = ({title, padTop}) => {
   return (
-    <CustomSection title='about-me'>
+    <CustomSection padTop={padTop} title={title}>
         <div style={{display: 'flex', alignItems: 'center'}}>
         <AboutMeText>
             <div>Hi, I&rsquo;m Daniel!</div>

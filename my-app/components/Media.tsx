@@ -13,7 +13,7 @@ export const Media:FC<MediaProps> = ({}) => {
   return (
     <MediaContainer colorCustom={theme.palette.primary.dark}>
       <a target='blank' href="https://github.com/Danu-IT"><AiFillGithub></AiFillGithub></a>
-      <a target='blank' href="#"><SlSocialVkontakte></SlSocialVkontakte></a>
+      <a target='blank' href="https://vk.com/id181744504"><SlSocialVkontakte></SlSocialVkontakte></a>
       <a target='blank' href="#"><FiFigma></FiFigma></a>
     </MediaContainer>
   )

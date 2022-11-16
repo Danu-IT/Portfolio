@@ -5,13 +5,16 @@ import { SiDiscord } from 'react-icons/si';
 import { FiMail } from 'react-icons/fi';
 import { useTheme } from '@mui/material';
 
-interface ContactsProps {}
+interface ContactsProps {
+  title?: string;
+  padBot?: string;
+}
 
-const Contacts: FC<ContactsProps> = ({}) => {
+const Contacts: FC<ContactsProps> = ({title, padBot = '100px'}) => {
   const theme = useTheme();
   return (
-    <CustomSection title='contacts'>
-      <div style={{display: 'flex', justifyContent: 'space-between', paddingBottom: '100px'}}>
+    <CustomSection title={title}>
+      <div style={{display: 'flex', justifyContent: 'space-between', paddingBottom: padBot}}>
         <div>I am interested in finding a job for further development.</div>
         <ContactsMail>
           <span>Message me here</span>

@@ -21,7 +21,7 @@ const Projects: FC<ProjectsProps> = ({padTop, title}) => {
             <Image alt="Picture of the author" width="0" height="0" sizes="100vw" style={{ width: '100%', height: 'auto' }} src='/fake.jpg'></Image>
             <ProjectItemOptions>
               {project.options.map(option => (
-                <ItemOptions key={i}>{option}  </ItemOptions>
+                <ItemOptions key={option}>{option}  </ItemOptions>
               ))}
             </ProjectItemOptions>
             <ProjectInfo>

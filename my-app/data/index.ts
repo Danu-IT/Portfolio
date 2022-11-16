@@ -4,7 +4,7 @@ interface LinksPortfolioProps {
 }
 
 export const LinksPortfolio: LinksPortfolioProps[] = [
-    { name: 'home', path: 'home'}, 
+    { name: 'home', path: '/'}, 
     { name: 'works', path: 'works'},
     { name: 'about-me', path: 'aboutMe'},
     { name: 'contacts', path: 'contacts'},
@@ -30,7 +30,7 @@ export const projects: ProjectsProps[] = [
 ]
 
 export const simpleProject: ProjectsProps[] = [
-    {name: 'ToDo', gitHub: 'https://github.com/Danu-IT/ToDo', options: ['typescript', 'reactjs', 'tailwindcss'], image: '', subtitle: 'the usual to-do list'},
+    {name: 'ToDo', gitHub: 'https://github.com/Danu-IT/ToDo', options: ['typescript', 'reactjs', 'tailwindcss'], image: '', subtitle: 'The usual to-do list'},
 ]
 
 export const skills: SkillsProps[] = [
@@ -39,3 +39,5 @@ export const skills: SkillsProps[] = [
     {name: 'other', options: ['HTML', 'CSS', 'SCSS', ]},
     {name: 'frameworks', options: ['React', 'Vue']},
 ];
+
+export const facts: string[] = ['I like winter more than summer', 'I have been to Egypt, the Dominican Republic and Turkey', 'My favorite movie is Lord of the Rings']

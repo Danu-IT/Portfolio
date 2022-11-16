@@ -4,7 +4,9 @@ import CustomSection from './../CustomSection'
 import styled from 'styled-components';
 import { useTheme } from '@mui/material'
 
-interface SkillsProps {}
+interface SkillsProps {
+  
+}
 
 const Skills: FC<SkillsProps> = ({}) => {
   const theme = useTheme();

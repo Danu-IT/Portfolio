@@ -6,28 +6,40 @@ import { LinksPortfolio } from '../data'
 import {IoLogoNodejs} from 'react-icons/io'
 import { Media } from './Media'
 import Link from 'next/link'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { setTheme } from '../feauters/theme/themeSlice'
 
-interface PropsHeader {
-    isDark: boolean;
-    setIsDark: Dispatch<SetStateAction<boolean>>;
+interface PropsHeader {}
+
+export interface RootState {
+    theme: boolean;
 }
 
-const Header: FC<PropsHeader> = ({isDark, setIsDark}) => {
+const Header: FC<PropsHeader> = ({}) => {
+    const selectIsOn = (state: RootState) => state.theme;
+    const themeState = useSelector(selectIsOn);
     const theme = useTheme();
+    const dispatch = useDispatch();
+    const handlerSwitch = () => {
+        dispatch(setTheme(themeState));
+    }
     return (
         <HeaderContainer colorCustom={theme.palette.primary.dark} bgCustom={theme.palette.primary.light}>
             <Content color={theme.palette.primary.dark} style={{height: '80px'}}>
-                <Logo>
-                    <IoLogoNodejs color={theme.palette.primary.main}/>
-                    <LogoText>Elias</LogoText>
-                </Logo>
+                <Link href={LinksPortfolio[0].path}>
+                    <Logo colorHover={theme.palette.primary.main}>
+                        <IoLogoNodejs color={theme.palette.primary.main}/>
+                        <LogoText>Elias</LogoText>
+                    </Logo>
+                </Link>
                 <Navbar>
                     {LinksPortfolio.map((link, i) => {
                         return(
                             <Item key={i}><span style={{color: theme.palette.primary.main}}>#</span><Link href={link.path}>{link.name}</Link></Item>
                         )
                     })}
-                    <Switch value={isDark} onChange={() => setIsDark(prev => !prev)} defaultChecked />
+                    <Switch value={themeState} onChange={handlerSwitch} defaultChecked />
                 </Navbar>
                 <Media></Media>
             </Content>
@@ -56,10 +68,17 @@ export const Content = styled.div`
     position: relative;
 `
 
-export const Logo = styled.div`
+interface LogoProps {
+    colorHover?: string;
+}
+
+export const Logo = styled.div<LogoProps>`
     display: flex;
     align-items: center;
     cursor: pointer;
+    &:hover{
+        color: ${p => p.colorHover}
+    }
 `
 const Navbar = styled.div`
     display: flex;

@@ -1,6 +1,8 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { createTheme } from '@mui/material';
+import { Provider } from 'react-redux';
+import { store } from '../store/store'
 
 export const lightTheme = createTheme({
   palette: {
@@ -23,5 +25,9 @@ export const darkTheme = createTheme({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
-    return <Component {...pageProps} />
+    return (
+    <Provider store={store}>
+        <Component {...pageProps} />
+    </Provider>
+    )
 }
