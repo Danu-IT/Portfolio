@@ -32,6 +32,9 @@ const CustomSectionBlock = styled.section<ContainerProps>`
   padding-top: ${p => p.padTop};
   background: ${p => p.bgCustom};
   color: ${p => p.colorCustom};
+  @media (max-width: 1024px){
+        padding: 30px 10px;
+  }
 `
 
 const TitleContainer = styled.div`

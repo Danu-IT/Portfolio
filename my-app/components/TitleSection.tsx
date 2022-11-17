@@ -33,6 +33,11 @@ const Title = styled.h1<TitleProps>`
         top: 20px;
         left: 187px;
     }
+    @media (max-width: 1024px){
+        &::after{
+            display: none;
+        }
+    }
 `
 
 export default TitleSection

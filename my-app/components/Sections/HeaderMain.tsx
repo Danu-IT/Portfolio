@@ -1,13 +1,15 @@
-import React, {FC} from 'react'
-import { ContainerProps, Content } from "../Header";
-import Button from "../UI/Button";
-import styled from "styled-components";
-import { useTheme } from '@mui/material';
-
+import React, {FC, useState} from 'react'
+import { ContainerProps, Content } from "../Header"
+import Button from "../UI/Button"
+import styled from "styled-components"
+import { useTheme } from '@mui/material'
+import Modal from '../Modal'
+import FormContacts from '../FormContacts'
 
 interface HeaderMainProps {}
 
 const HeaderMain: FC<HeaderMainProps> = ({}) => {
+    const [visibleModal, setVisibleModal] = useState<boolean>(false);
     const theme = useTheme();
     return (
     <HederContainer colorCustom={theme.palette.primary.dark} bgCustom={theme.palette.primary.light}>
@@ -16,7 +18,7 @@ const HeaderMain: FC<HeaderMainProps> = ({}) => {
               <Text>Daniil is a</Text>
               <Text><span style={{color:theme.palette.primary.main }}>front-end developer</span></Text>
               <SmallText style={{margin: '25px 0'}}>He crafts responsive websites where technologies meet creativity</SmallText>
-              <Button>Contact me!!</Button>
+              <Button onClick={() => setVisibleModal(prev => !prev)}>Contact me!!</Button>
             </HeaderLeft>
             <HeaderRight>
               <User src='./User.png'></User>
@@ -24,30 +26,52 @@ const HeaderMain: FC<HeaderMainProps> = ({}) => {
               <Dots src='./Dots.svg'></Dots>
               <TextImage>Currently working on Portfolio</TextImage>
             </HeaderRight>
+            <Modal visibleModal={visibleModal} setVisibleModal={setVisibleModal}>
+              <FormContacts setVisibleModal={setVisibleModal}></FormContacts>
+            </Modal>
           </HeaderContent>
     </HederContainer>
     )
 }
 
 const HederContainer = styled.div<ContainerProps>`
-    background: ${p => p.bgCustom};
-    color: ${p => p.colorCustom};
-    padding-top: 50px;
+  background: ${p => p.bgCustom};
+  color: ${p => p.colorCustom};
+  padding-top: 50px;
+  @media (max-width: 1024px){
+    padding: 30px 10px;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 42px;
+  }
 `
 
 const HeaderContent = styled(Content)`
   display: flex;
+  position: relative;
+  @media (max-width: 1024px){
+    flex-direction: column;
+  }
 `
 
 const HeaderLeft = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  &:last-child{
+    width: 100px;
+  }
+  @media (max-width: 1024px){
+    text-align: center;
+  }
 `
 const Text = styled.span`
   font-weight: 600;
   font-size: 32px;
   line-height: 42px;
+  @media (max-width: 1024px){
+    font-size: 25px;
+  }
 `
 const SmallText = styled.span<ContainerProps>`
   font-size: 16px;
@@ -73,6 +97,9 @@ const TextImage = styled.span`
   border: 1px solid #ABB2BF;
   padding: 8px 30px;
   font-weight: 800;
+  @media (max-width: 1024px){
+    display: none;
+  }
 `
 
 const LogoMain = styled.img`

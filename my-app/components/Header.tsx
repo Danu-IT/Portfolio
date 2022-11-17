@@ -1,6 +1,6 @@
 import { useTheme } from '@mui/material'
 import { Switch } from '@mui/material'
-import React, { Dispatch, FC, SetStateAction } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import { LinksPortfolio } from '../data'
 import {IoLogoNodejs} from 'react-icons/io'
@@ -36,11 +36,12 @@ const Header: FC<PropsHeader> = ({}) => {
                 <Navbar>
                     {LinksPortfolio.map((link, i) => {
                         return(
-                            <Item key={i}><span style={{color: theme.palette.primary.main}}>#</span><Link href={link.path}>{link.name}</Link></Item>
+                            <ItemCustom key={i}><span style={{color: theme.palette.primary.main}}>#</span><Link href={link.path}>{link.name}</Link></ItemCustom>
                         )
                     })}
                     <Switch value={themeState} onChange={handlerSwitch} defaultChecked />
                 </Navbar>
+                <HumbMenu>Menu</HumbMenu>
                 <Media></Media>
             </Content>
         </HeaderContainer>
@@ -57,6 +58,12 @@ export interface ContainerProps {
 const HeaderContainer = styled.div<ContainerProps>`
     background: ${p => p.bgCustom};
     color: ${p => p.colorCustom};
+    @media (max-width: 1024px){
+        padding: 0 10px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 21px;
+    }
 `
 
 export const Content = styled.div`
@@ -84,19 +91,29 @@ const Navbar = styled.div`
     display: flex;
     align-items: center;
     gap: 32px;
+    @media (max-width: 1200px){
+        display: none;
+    }
 `
 
 export const LogoText = styled.div`
     margin-left: 8px;
 `
 
-const Item = styled.li`
+const ItemCustom = styled.li`
     cursor: pointer;
     transition-duration: 100ms;
     :hover{
         scale: 1.05;
         transition-duration: 100ms;
         opacity: 0.9;
+    }
+`
+
+const HumbMenu = styled.span`
+    display: none;
+    @media (max-width: 1200px){
+        display: inline-block;
     }
 `
 

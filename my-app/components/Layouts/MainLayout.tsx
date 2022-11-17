@@ -1,7 +1,7 @@
 import  Head  from 'next/head';
-import React, { useState, Dispatch, FC, SetStateAction } from 'react'
+import React, { FC } from 'react'
 import { ThemeProvider, useTheme } from '@mui/material'
-import Header, { RootState } from '../Header';
+import Header from '../Header';
 import Footer from '../Footer';
 import { useSelector } from "react-redux";
 import { darkTheme, lightTheme } from '../../pages/_app';

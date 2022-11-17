@@ -4,12 +4,13 @@ import { useTheme } from '@mui/material';
 
 type ButtonProps = {
     children?: React.ReactNode;
+    onClick?: () => void;
 }
 
-const Button: FC<ButtonProps> = ({children}) => {
+const Button: FC<ButtonProps> = ({children, onClick}) => {
     const theme = useTheme();
   return (
-    <Container colorHover={theme.palette.primary.light} color={theme.palette.primary.dark} border={theme.palette.primary.main}>
+    <Container onClick={onClick} colorHover={theme.palette.primary.light} color={theme.palette.primary.dark} border={theme.palette.primary.main}>
         <TextButton>{children}</TextButton>
     </Container>
   )

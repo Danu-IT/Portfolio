@@ -14,7 +14,7 @@ const Contacts: FC<ContactsProps> = ({title, padBot = '100px'}) => {
   const theme = useTheme();
   return (
     <CustomSection title={title}>
-      <div style={{display: 'flex', justifyContent: 'space-between', paddingBottom: padBot}}>
+      <CustomContact padBot={padBot}>
         <div>I am interested in finding a job for further development.</div>
         <ContactsMail>
           <span>Message me here</span>
@@ -27,10 +27,26 @@ const Contacts: FC<ContactsProps> = ({title, padBot = '100px'}) => {
             <span>d_tareev@mail.ru</span>
           </ContactsItem>
         </ContactsMail>
-      </div>
+      </CustomContact>
     </CustomSection>
   )
 }
+
+interface CustomContactProps {
+  padBot?: string;
+}
+
+const CustomContact = styled.div<CustomContactProps>`
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: ${p => p.padBot};
+  @media (max-width: 700px){
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+  }
+`
 
 const ContactsMail = styled.div`
   display: flex;
