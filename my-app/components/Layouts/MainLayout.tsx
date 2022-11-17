@@ -1,8 +1,9 @@
 import  Head  from 'next/head';
-import React, { useState, Dispatch, FC, SetStateAction } from 'react'
+import React, { FC } from 'react'
 import { ThemeProvider, useTheme } from '@mui/material'
 import Header from '../Header';
 import Footer from '../Footer';
+import { useSelector } from "react-redux";
 import { darkTheme, lightTheme } from '../../pages/_app';
 
 type PropsMainLayouts = {
@@ -12,17 +13,20 @@ type PropsMainLayouts = {
 
 export const MainLayout: FC<PropsMainLayouts> = ({children, title}) => {
   const theme = useTheme();
-  const [isDark, setIsDark] = useState<boolean>(false);
+  const selectIsOn = (state: any) => state.theme.theme;
+  const themeState = useSelector(selectIsOn);
   return (
     <>
       <Head>
         <title>{title}</title>
         <meta charSet='utf-8'/>
       </Head> 
-      <ThemeProvider theme={!isDark ? darkTheme : lightTheme}>
-        <Header isDark={isDark} setIsDark={setIsDark}></Header>
-        <main style={{background: theme.palette.primary.light}}>{children}</main>
-        <Footer></Footer>
+      <ThemeProvider theme={!themeState ? darkTheme : lightTheme}>
+        <div> 
+          <Header></Header>
+          <main style={{background: theme.palette.primary.light}}>{children}</main>
+          <Footer></Footer>
+        </div>
       </ThemeProvider>
     </>
   )

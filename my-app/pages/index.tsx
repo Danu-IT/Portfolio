@@ -7,12 +7,12 @@ import Contacts from "../components/Sections/Contacts"
 
 export default function Home() {
   return (
-      <MainLayout title="Portfolio">
+      <MainLayout title='Home'>
         <HeaderMain></HeaderMain>
         <Projects title='projects'></Projects>
         <Skills></Skills>
-        <AboutMe></AboutMe>
-        <Contacts></Contacts>
+        <AboutMe title='about-me'></AboutMe>
+        <Contacts title='contacts'></Contacts>
       </MainLayout>
-  )
+  ) 
 }

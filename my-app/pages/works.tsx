@@ -1,15 +1,15 @@
-import React, {FC} from 'react'
+import React from 'react'
 import { MainLayout } from '../components/Layouts/MainLayout'
 import Root from '../components/Root'
 import Projects from '../components/Sections/Projects'
+import SmallProjects from '../components/Sections/SmallProjects'
 
-interface WorksProps {}
-
-const works: FC<WorksProps> = ({}) => {
+const works = ({}) => {
   return (
-    <MainLayout title='Portfolio'>
+    <MainLayout title='Works'>
       <Root link='projects' subtitle='List of my projects'></Root>
       <Projects padTop={'90px'}></Projects>
+      <SmallProjects></SmallProjects>
     </MainLayout>
   )
 }

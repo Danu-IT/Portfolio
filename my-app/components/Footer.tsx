@@ -58,6 +58,12 @@ const FooterMail = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
+  @media (max-width: 400px){
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 15px;
+  }
 `
 
 const Media = styled.div`

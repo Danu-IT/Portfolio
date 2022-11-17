@@ -1,10 +1,10 @@
-import React, {FC} from 'react'
-import {AiFillGithub} from 'react-icons/ai'
-import {SlSocialVkontakte} from 'react-icons/sl'
-import {FiFigma} from 'react-icons/fi';
-import styled from 'styled-components';
-import { ContainerProps } from './Header';
-import { useTheme } from '@mui/material';
+import React, { FC } from 'react'
+import { AiFillGithub } from 'react-icons/ai'
+import { SlSocialVkontakte } from 'react-icons/sl'
+import { FiFigma } from 'react-icons/fi'
+import styled from 'styled-components'
+import { ContainerProps } from './Header'
+import { useTheme } from '@mui/material'
 
 interface MediaProps {}
 
@@ -13,7 +13,7 @@ export const Media:FC<MediaProps> = ({}) => {
   return (
     <MediaContainer colorCustom={theme.palette.primary.dark}>
       <a target='blank' href="https://github.com/Danu-IT"><AiFillGithub></AiFillGithub></a>
-      <a target='blank' href="#"><SlSocialVkontakte></SlSocialVkontakte></a>
+      <a target='blank' href="https://vk.com/id181744504"><SlSocialVkontakte></SlSocialVkontakte></a>
       <a target='blank' href="#"><FiFigma></FiFigma></a>
     </MediaContainer>
   )
@@ -25,8 +25,11 @@ const MediaContainer = styled.div<ContainerProps>`
   justify-content: center;
   position: absolute;
   top: 190px;
-  left: -100px;
+  left: -70px;
   color: ${p => p.colorCustom};
+  @media (max-width: 1200px) {
+    display: none;
+  }
   & > * {
     margin-bottom: 12px;  
     cursor: pointer;
