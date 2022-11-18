@@ -30,7 +30,8 @@ const SmallProjects: FC<SmallProjectsProps> = ({}) => {
 
 const ProjectItem = styled.div`
   border: 1px solid gray;
-  width: 331px;
+  max-width: 320px;
+  width: 100%;
 `
 const ProjectItemHeader = styled.div`
   border-bottom: 1px solid gray;

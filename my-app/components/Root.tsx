@@ -25,6 +25,9 @@ const RootContainer = styled.div<ContainerProps>`
     color: ${p => p.colorCustom};
     font-size: 32px;
     line-height: 42px;
+    @media (max-width: 1024px){
+        padding: 30px 10px;
+    }
 `
 
 const RootCustom = styled.div``

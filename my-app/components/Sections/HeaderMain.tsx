@@ -58,11 +58,12 @@ const HeaderLeft = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   &:last-child{
     width: 100px;
   }
   @media (max-width: 1024px){
-    text-align: center;
+    align-items: center;
   }
 `
 const Text = styled.span`
@@ -85,7 +86,7 @@ const HeaderRight = styled.div`
 const User = styled.img`
   object-fit: cover;
   position: relative;
-  z-index: 100;
+  z-index: 10;
   width: 100%;
   height: 100%;
 `
@@ -113,7 +114,7 @@ const Dots = styled.img`
   position: absolute;
   right: 51px;
   top: 209px;
-  z-index: 101;
+  z-index: 11;
 `
 
 export default HeaderMain

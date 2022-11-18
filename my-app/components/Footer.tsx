@@ -2,10 +2,10 @@ import React, { FC } from 'react'
 import { useTheme } from '@mui/material'
 import { AiFillGithub } from 'react-icons/ai'
 import { SlSocialVkontakte } from 'react-icons/sl'
-import { FiFigma } from 'react-icons/fi';
-import styled from 'styled-components';
-import { ContainerProps, Logo, LogoText } from './Header';
-import { IoLogoNodejs } from 'react-icons/io';
+import { FiFigma } from 'react-icons/fi'
+import styled from 'styled-components'
+import { ContainerProps, Logo, LogoText } from './Header'
+import { IoLogoNodejs } from 'react-icons/io'
 
 interface FooterProps {}
 
@@ -25,7 +25,7 @@ const Footer: FC<FooterProps> = ({}) => {
             <span>Front-end developer based in Russia</span>
             <Media>
               <a target='blank' href="https://github.com/Danu-IT"><AiFillGithub size={'20px'}></AiFillGithub></a>
-              <a target='blank' href="#"><SlSocialVkontakte size={'20px'}></SlSocialVkontakte></a>
+              <a target='blank' href="https://vk.com/id181744504"><SlSocialVkontakte size={'20px'}></SlSocialVkontakte></a>
               <a target='blank' href="#"><FiFigma size={'20px'}></FiFigma></a>
             </Media>
           </FooterMail>
@@ -40,6 +40,9 @@ const FooterContainer = styled.div<ContainerProps>`
     color: ${p => p.colorCustom};
     border-top: 1px solid gray;
     padding: 35px 0 20px 0;
+    @media (max-width: 1024px){
+        padding: 30px 10px;
+  }
 `
 
 const FooterContent = styled.div`
