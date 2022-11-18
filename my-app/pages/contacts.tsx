@@ -9,7 +9,7 @@ type Props = {}
 const contacts = (props: Props) => {
   return (
     <MainLayout title='Contacts'>
-      <Root link='projects' subtitle='Who am i'></Root>
+      <Root link='contacts' subtitle='Who am i'></Root>
       <Contacts padBot='0px'></Contacts>
       <AllMedia></AllMedia>
     </MainLayout>
