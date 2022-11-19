@@ -46,7 +46,7 @@ const FormContacts: FC<FormContactsProps> = ({setVisibleModal}) => {
 }
 
 interface CustomFormProps {
-    onSubmit: () => void;
+    onSubmit: (e: any) => void;
 }
 
 const CustomForm = styled.form<CustomFormProps>`
